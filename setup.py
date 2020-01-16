@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='pyDHFixed',
     packages=['pyDHFixed'],
-    version='0.1.3',
+    version='0.1.4',
     description='Pure Python Implementation of Diffie-Hellman Key Exchange',
     author='Amirali Sanatinia',
     author_email='amirali@ccs.neu.edu',

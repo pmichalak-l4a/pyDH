@@ -60,7 +60,7 @@ class DiffieHellman:
             self.p = primes[group]["prime"]
             self.g = primes[group]["generator"]
         else:
-            raise Exception("Group not supported")
+            raise GroupException("Group not supported")
 
         if a is None:
             self.__a = int(binascii.hexlify(os.urandom(32)), base=16)
@@ -92,4 +92,12 @@ class DiffieHellman:
             self.shared_key = pow(other_contribution, self.__a, self.p)
             return hashlib.sha256(str(self.shared_key).encode()).hexdigest()
         else:
-            raise Exception("Bad public key from other party")
+            raise PublicKeyException("Bad public key from other party")
+
+
+class PublicKeyException(Exception):
+    """Bad public key from other party"""
+    
+
+class GroupException(Exception):
+    """ Group not supported """
